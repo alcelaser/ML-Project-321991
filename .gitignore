@@ -10,9 +10,11 @@ venv/
 .env/
 .venv-wsl/
 
-# Jupyter
+# Jupyter and VSC
 .ipynb_checkpoints/
+.vscode/
 
 # OS junk
 .DS_Store
+
 Thumbs.db
