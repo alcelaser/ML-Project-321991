@@ -10,6 +10,9 @@ venv/
 .env/
 .venv-wsl/
 
+#Tensorboard
+logs/
+
 # Jupyter and VSC
 .ipynb_checkpoints/
 .vscode/
