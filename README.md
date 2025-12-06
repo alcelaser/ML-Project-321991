@@ -54,7 +54,7 @@ The project is divided into six main sections:
 
 5 .  **Supervised learning:** training a CNN and an ANN (using the extracted features) for image classification and comparing their performance.
 
-6 .  **Final comparison and conclusions: ** summarising the models’ behaviour and the key findings.
+6 .  **Final comparison and conclusions:** summarising the models’ behaviour and the key findings.
 
 
 
