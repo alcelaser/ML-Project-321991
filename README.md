@@ -6,7 +6,7 @@ Alberto Maccanico
 Claudio De Acutis 312111
 Lapo Chiaselotti
 
-## [Section 1] Introduction
+
 
 
 
@@ -56,7 +56,7 @@ The project is divided into six main sections:
 
 6 .  **Final comparison and conclusions:** summarising the models’ behaviour and the key findings.
 
-
+## **[Section 2] Methods**
 
 
 Once we had imported the Dataset and performed EDA, we used **MobileNetV2** to extract the features, since our idea was to then use an ANN that could actually distinguish between them and then compare it with a CNN trained only on the dataset. Since features were high-dimensional we applied:
