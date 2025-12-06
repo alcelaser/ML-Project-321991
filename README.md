@@ -106,4 +106,42 @@ E1 --> H["Evaluation & Comparison"]
 E2 --> H
 G --> H
 ```
+# [Section 3] Experimental Design 
 
+In this section, we describe the experiments conducted to validate our approach and compare different machine learning models applied to large scale image classification and structure discovery.
+
+1) **Clustering on MobileNetV2 Features:**  
+- Purpose is to evaluate whether semantic visual categories naturally emerge when applying unsupervised methods to highly dimensional visual features extracted from MobileNetV2.  
+- Baselines we compared two standard unsupervised clustering algorithms:  
+  • K-Means  
+  • Agglomerative Hierarchical Clustering  
+  Both baselines were run with 233 clusters, matching the number of dataset categories.  
+- Evaluation Metrics:  
+  • Silhouette Score  for cluster compactness and separation  
+  • NMI (Normalized Mutual Information) that quantifies information overlap between clusters and true labels  
+  • ARI (Adjusted Rand Index) which measures structural agreement between predicted clusters and true categories  
+
+2) **ANN Classification on MobileNetV2 Features:**  
+- Purpose is to assess how well an Artificial Neural Network can classify images using pre-extracted deep features instead of learning features from scratch.  
+- Baseline. The ANN was compared against:  
+  • Clustering results 
+  • The CNN trained directly on raw 128×128 images  
+  This allowed us to understand how much performance comes from feature extraction  and how much learned processing.  
+- Evaluation Metrics:  
+  • Accuracy, the standard measure  
+  • Training time, to compare computational efficiency  
+  • Validation loss trends  
+  ANN served as the baseline for the CNN.  
+
+3) **CNN Classification from Raw Images:**  
+- Purpose is to train a Convolutional Neural Network end-to-end and compare its ability to learn features directly from images against the ANN that uses MobileNetV2 features.  
+- Baseline. The CNN was directly compared with:  
+  • ANN classifier  
+  • Clustering results   
+  The ANN serves as a strong baseline because it benefits from MobileNet’s pretraining  
+- Evaluation Metrics  
+  • Accuracy , standard metric for the validation  
+  • Validation Loss  
+  • Interclass accuracy  
+  • Confusion matrices comparison  
+  These metrics illustrate that the CNN isn't as effective as the ANN that relies on high-quality pretrained features.
