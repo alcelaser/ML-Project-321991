@@ -90,7 +90,7 @@ E1 --> H["Evaluation & Comparison"]
 E2 --> H
 G --> H
 ```
-## Section 3 Experimental Design 
+## **Section 3 Experimental Design**
 
 In this section, we describe the experiments conducted to validate our approach and compare different machine learning models applied to large scale image classification and structure discovery.
 
@@ -129,3 +129,50 @@ In this section, we describe the experiments conducted to validate our approach 
   • Interclass accuracy  
   • Confusion matrices comparison  
   These metrics illustrate that the CNN isn't as effective as the ANN that relies on high-quality pretrained features.
+
+## **Section 4 - Results**
+
+Our analysis of 25,683 images across 233 categories revealed three key insights:
+
+**1. Transfer Learning in memory-limited environments beats from-scratch**
+
+PatternMind ANN achieved **79.2% test accuracy** versus CNN's **43.1%** a 36-point gap. The ANN also trained 9× faster (10 minutes vs 90 minutes). Pre-trained MobileNetV2 features provide robust 1280-dimensional representations that immediately discriminate between categories, while the CNN (constrained by 8GB VRAM to 128×128 resolution) struggles to learn effective features for 233 classes with sparse data (70+ classes have <50 samples).
+
+**2. Clustering Captures Feature Similarity But Not Boundaries**
+
+K-Means and Hierarchical Clustering both achieved **NMI ≈ 0.74** (strong semantic correlation) but **Silhouette ≈ 0.02** (near-zero separability). Categories occupy overlapping regions rather than distinct partitions. Hierarchical dendrograms revealed natural groupings: early merges (<50 distance) for visually indistinguishable pairs {rifle, ak47}, {comet, galaxy}, while distinctive categories (faces, airplanes) remained isolated until final linkage (>200 distance). Clustering accuracy via majority voting reached ~63%, below supervised methods but above random chance (0.43%).
+
+**3. Imbalance Creates Systematic Failures**
+
+t-SNE projections show **survival of the fittest dynamics**: well-sampled classes (airplanes: 800 samples) form tight clusters with >85% accuracy, while minority classes (elk: 37, hibiscus: 29) fragment or collapse into neighbors (elk -> horse, hibiscus -> iris). The 10.26× imbalance ratio + 28% feature sparsity reduces effective dimensionality to ~920 features. Classification confusions concentrate in subcategory pairs (sneaker to tennis-shoe), rare class absorption, and polluted-categories ("clutter" scatters uniformly across space).
+
+**Key Visualizations** (made with plotly so in HTML and not visualisable via markdown):
+- Confusion matrices: ANN outperforms CNN on 198/233 classes
+- Top 5 confusions: all involve visually similar subcategories amplified by imbalance
+- t-SNE: isolated manifolds for dominant classes, fragmented regions for minorities
+
+---
+
+## **Section 5 - Conclusions**
+
+This project demonstrates that **the organisation of a visual space is dependent on so much more factors than data quality alone**. Our key findings: transfer learning is helpful for imbalanced, high-dimensional classification (36-point ANN-CNN gap) under limited memory costraints; clustering reveals semantic structure but not clean boundaries (high NMI, near-zero Silhouette); and failure modes are systematic confusions that concentrate in subcategory pairs, rare classes collapse, and polluted-categories. 
+
+These patterns reflect dataset properties: 233 categories competing in ~920 effective dimensions with 70+ classes below 50 samples.
+
+### Limitations and Future Work
+
+**Unanswered Questions:**
+
+Would the CNN perform better with a reasonable batch size? Would we have to adapt our Learning Rate and Optimiser in that environment?
+
+Is there a way to naturally integrate the sub-classes into their larger classes without losing sophistication?
+
+Could there be a way to remove clutter?
+
+**Natural Next Steps:**
+
+- Merge indistinguishable subcategories to reduce classes to ~180 while preserving diversity (Capture all of variance explained by dataset)
+
+- Validate across fine-grained datasets (Stanford Dogs, medical imaging)
+
+- Remove polluting categories that contribute nothing to the semantic space, but rather clutter it.
