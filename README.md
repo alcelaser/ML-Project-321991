@@ -2,37 +2,25 @@
 
 ## Team Members:
 
-Alberto Maccanico 321991
-Claudio De Acutis 312111
-Lapo Chiaselotti
-
-
-
-
-
-# PatternMind: Exploring Semantic Structures in Image Collections
-
-
-
-## Team Members:
-
-
-
 Alberto Maccanico - 321991
 
 Claudio De Acutis – 312111
 
 Lapo Chiaselotti
 
-
-
 ## **Section 1 - Introduction**
 
+### FILES:
 
+- main.ipynb -> Our main notebook containing all the analysis
+- best_cnn.keras -> Our best CNN, saved so we can continue testing without re-training the CNN (1h30 min at minimum)
+- setup_gpu.sh -> GPU setup for use in WSL
+- .gitignore -> Contains all the local files we did not want to flood git with (logs from tensorboard, virual environments, dataset ect ect)
+- README.md -> You're reading it
 
 In the **PatternMind** project we aimed to explore semantic structures within large and diverse image collections.
 
-Our main focus was to **automatically extract visual patterns and categories** using multiple machine learning techniques, with the goal of understanding similarity, thematic structure, and ambiguity across images.
+Our main focus was to **extract visual patterns and categories** using multiple machine learning techniques, with the goal of understanding similarity, thematic structure, and ambiguity across images.
 
 
 
