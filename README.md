@@ -44,6 +44,8 @@ The project is divided into six main sections:
 
 6 .  **Final comparison and conclusions:** summarising the models’ behaviour and the key findings.
 
+---
+
 ## **Section 2 - Methods**
 
 
@@ -90,6 +92,9 @@ E1 --> H["Evaluation & Comparison"]
 E2 --> H
 G --> H
 ```
+
+---
+
 ## **Section 3 Experimental Design**
 
 In this section, we describe the experiments conducted to validate our approach and compare different machine learning models applied to large scale image classification and structure discovery.
@@ -129,6 +134,8 @@ In this section, we describe the experiments conducted to validate our approach 
   • Interclass accuracy  
   • Confusion matrices comparison  
   These metrics illustrate that the CNN isn't as effective as the ANN that relies on high-quality pretrained features.
+
+---
 
 ## **Section 4 - Results**
 
