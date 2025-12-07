@@ -18,7 +18,7 @@ Lapo Chiaselotti
 
 
 
-Alberto Maccanico
+Alberto Maccanico - 321991
 
 Claudio De Acutis – 312111
 
@@ -26,7 +26,7 @@ Lapo Chiaselotti
 
 
 
-## **[Section 1] Introduction**
+## **Section 1 - Introduction**
 
 
 
@@ -56,11 +56,11 @@ The project is divided into six main sections:
 
 6 .  **Final comparison and conclusions:** summarising the models’ behaviour and the key findings.
 
-## **[Section 2] Methods**
+## **Section 2 - Methods**
 
 
-Once we had imported the Dataset and performed EDA, we used **MobileNetV2** to extract the features, since our idea was to then use an ANN that could actually distinguish between them and then compare it with a CNN trained only on the dataset. Since features were high-dimensional we applied:
--	**PCA**, that educes 1280 to 2 or 3 dimensions
+Once we had imported the Dataset and performed EDA, we used **MobileNetV2** to extract the features to make the images into useable vectors for clustering and (after alot of practice and testing with bad CNNs) so that we could eventually model a Neural Net solely based off the features of the image, due to memory constraints in testing the CNN. Since features were high-dimensional we applied:
+-	**PCA**, that reduces 1280 to 2 or 3 dimensions (to allow us to visualise them)
 -	**T-SNE**, which Captures local neighborhood structure and is Useful to visualize clusters and category overlap
 We then applied some preprocessing to the datas in order to make them fit for model training
 1. **Label Encoding**: Convert category names to integers
@@ -106,7 +106,7 @@ E1 --> H["Evaluation & Comparison"]
 E2 --> H
 G --> H
 ```
-# [Section 3] Experimental Design 
+## Section 3 Experimental Design 
 
 In this section, we describe the experiments conducted to validate our approach and compare different machine learning models applied to large scale image classification and structure discovery.
 
