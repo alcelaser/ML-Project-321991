@@ -68,12 +68,8 @@ We first built the CNN whose imput would be the **raw 128×128 RGB images** and 
 -The last one which contained **Global Average Pooling** to reduce the number of parameters and a **dense layer** to classify and interpret the extracted features.
 -The **output layer**, that returns the class in which the photos belong.
 The blocks also included **regularization** (**Dropout, BatchNorm, Augmentation**), to **avoid overfitting**.
-Then we build the **ANN** that used pre-extracted MobileNetV2 features. Even in this case we created **three blocks**, which all had a **dense layer** with a decreasing number of neurons to interpret and classify the features. Even in this case we applied **BatchNormalization and Dropout** to stabilize training and avoid overfitting.   The ANN “patternmind” model was **both faster and more accurate** than the CNN one which had to deal with the **limited amount of RAM and the relatively small dimension of the Dataset.** The ANN had an almost **80%** accuracy, compared with the **42%** one of the CNN, and a very small training time due to the fact it could rely on **pre extracted features** and didn’t have to do it itself.
+Then we build the **ANN** that used pre-extracted MobileNetV2 features. Even in this case we created **three blocks**, which all had a **dense layer** with a decreasing number of neurons to interpret and classify the features. Even in this case we applied **BatchNormalization and Dropout** to stabilize training and avoid overfitting.   The ANN “patternmind” model was **both faster and more accurate** than the CNN one which had to deal with the **limited amount of RAM and the relatively small dimension of the Dataset.** The ANN had an almost **80%** accuracy, compared with the **42%** one of the CNN, and a very small training time due to the fact it could rely on **pre extracted features** and didn’t have to do it itself, as well as no additional image processing going on, just features at play.
 
-The System Requirements are:
-- Python 3.10+
-- CUDA-compatible GPU (8GB+ VRAM recommended)
-- WSL2 (for Windows users)
 ```mermaid
 flowchart TD
 
@@ -81,7 +77,7 @@ A["Raw Images (233 classes)"] --> B["EDA and Validation"]
 
 B --> C["MobileNetV2 Feature Extraction (1280-dim)"]
 
-C --> D1["Dimensionality Reduction: PCA & t-SNE"]
+C --> D1["Visualisation and Dimension Reduction: PCA & t-SNE"]
 C --> D2["Preprocessing: Label Encoding, Scaling, Splitting"]
 
 D2 --> E1["Clustering: K-Means & Hierarchical"]
