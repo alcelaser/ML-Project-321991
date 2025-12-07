@@ -180,6 +180,6 @@ Could there be a way to remove clutter?
 
 - Merge indistinguishable subcategories to reduce classes to ~180 while preserving diversity (Capture all of variance explained by dataset)
 
-- Validate across fine-grained datasets (Stanford Dogs, medical imaging)
+- Validate across fine-grained datasets (other image sets on Kaggle)
 
 - Remove polluting categories that contribute nothing to the semantic space, but rather clutter it.
