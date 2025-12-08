@@ -159,8 +159,8 @@ K-Means and Hierarchical Clustering both achieved **NMI ≈ 0.74** (strong seman
 t-SNE projections show **survival of the fittest dynamics**: well-sampled classes (airplanes: 800 samples) form tight clusters with >85% accuracy, while minority classes (elk: 37, hibiscus: 29) fragment or collapse into neighbors (elk -> horse, hibiscus -> iris). The 10.26× imbalance ratio + 28% feature sparsity reduces effective dimensionality to ~920 features. Classification confusions concentrate in subcategory pairs (sneaker to tennis-shoe), rare class absorption, and polluted-categories ("clutter" scatters uniformly across space).
 
 **Key Visualizations** :
-- Confusion matrices: ANN outperforms CNN on 198/233 classes
-- Top 5 confusions: all involve visually similar subcategories amplified by imbalance
+- [CNN vs ANN confusion matrix](images/cnn_vs_ann_confusion.jpg)
+- [ANN correct, CNN wrong](images/unrendered_plots/ANNcorrectCNNwrong.png)
 - t-SNE: isolated manifolds for dominant classes, fragmented regions for minorities (made with plotly so in HTML and not visualisable via markdown)
 
 ---
