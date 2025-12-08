@@ -18,19 +18,9 @@ Lapo Chiaselotti
 - .gitignore -> Contains all the local files we did not want to flood git with (logs from tensorboard, virual environments, dataset ect ect)
 - README.md -> You're reading it
 
-### FOLDERS:
-
-- .venv (old virtual environment, now .venv-wsl which is in gitignore)
-- images -> contain all the images used in the project as well as old visualisations under the old sub-folder which contains neat visualisations that we didn't have the space to include or were scrapped for being too cluttered/ not of much use.
- (from gitignore)
- - .vscode -> setup to get gpu/jupyter kernel to work
- - logs -> logs for tensorboard
- - .data -> our dataset, too large to upload to github
-
 In the **PatternMind** project we aimed to explore semantic structures within large and diverse image collections.
 
 Our main focus was to **extract visual patterns and categories** using multiple machine learning techniques, with the goal of understanding similarity, thematic structure, and ambiguity across images.
-
 
 
 We also compared the performance of different models to evaluate which approaches were most suitable and what insights each one could provide about the dataset.
