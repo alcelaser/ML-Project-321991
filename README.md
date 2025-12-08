@@ -83,7 +83,7 @@ B --> C["MobileNetV2 Feature Extraction (1280-dim)"]
 C --> D1["Visualisation and Dimension Reduction: PCA & t-SNE"]
 C --> D2["Preprocessing: Label Encoding, Scaling, Splitting"]
 
-D2 --> E1["Clustering: K-Means & Hierarchical"]
+D2 --> E1["Clustering/Classification: K-Means & Hierarchical + Random Forest"]
 D2 --> E2["ANN Classifier (PatternMind)"]
 
 A --> F["Image Preprocessing: Resizing & Augmentation"]
