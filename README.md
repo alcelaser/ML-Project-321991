@@ -18,6 +18,15 @@ Lapo Chiaselotti
 - .gitignore -> Contains all the local files we did not want to flood git with (logs from tensorboard, virual environments, dataset ect ect)
 - README.md -> You're reading it
 
+### FOLDERS:
+
+- .venv (old virtual environment, now .venv-wsl which is in gitignore)
+- images -> contain all the images used in the project as well as old visualisations under the old sub-folder which contains neat visualisations that we didn't have the space to include or were scrapped for being too cluttered/ not of much use.
+ (from gitignore)
+ - .vscode -> setup to get gpu/jupyter kernel to work
+ - logs -> logs for tensorboard
+ - .data -> our dataset, too large to upload to github
+
 In the **PatternMind** project we aimed to explore semantic structures within large and diverse image collections.
 
 Our main focus was to **extract visual patterns and categories** using multiple machine learning techniques, with the goal of understanding similarity, thematic structure, and ambiguity across images.
@@ -38,7 +47,7 @@ The project is divided into six main sections:
 
 3 .  **Data preprocessing:** label encoding, feature scaling, and creating the train/validation/test splits.
 
-4 .  **Clustering analysis:** applying K-Means and Hierarchical Clustering and evaluating them with Silhouette Score, NMI, and ARI.
+4 .  **Clustering/Classification analysis:** applying K-Means and Hierarchical Clustering and evaluating them with Silhouette Score, NMI, and ARI to gauge how the feature space is distributed.
 
 5 .  **Supervised learning:** training a CNN and an ANN (using the extracted features) for image classification and comparing their performance.
 
@@ -60,10 +69,12 @@ We tested two clustering algorithms:
 •	**K-Means** (partition-based, centroid-driven)
 •	**Agglomerative Hierarchical Clustering** (tree-based, bottom-up)
 Both were run with 233 clusters (number of categories) to analyze how well visual features naturally group.
+We also test breifly a classification algorithm, Random Forest.
 We used as Evaluation metrics:
 •	**Silhouette Score** to see cluster compactness and separation
 •	**NMI** (Normalized Mutual Information) for cluster-label information overlap
 •	**ARI** (Adjusted Rand Index) to explain cluster-label structural similarity
+• **Confusion Matricies** to see where models fail
 
 We first built the CNN whose imput would be the **raw 128×128 RGB images** and which was formed by **4 blocks**: 
 -the first three to extract the feature thanks to the **convolutional layers**, and which applied each a rising amount of filters, in order to extract higher level features.
@@ -99,16 +110,19 @@ G --> H
 
 In this section, we describe the experiments conducted to validate our approach and compare different machine learning models applied to large scale image classification and structure discovery.
 
-1) **Clustering on MobileNetV2 Features:**  
+1) **Clustering and Classification on MobileNetV2 Features:**  
 - Purpose is to evaluate whether semantic visual categories naturally emerge when applying unsupervised methods to highly dimensional visual features extracted from MobileNetV2.  
 - Baselines we compared two standard unsupervised clustering algorithms:  
   • K-Means  
   • Agglomerative Hierarchical Clustering  
   Both baselines were run with 233 clusters, matching the number of dataset categories.  
+  Then, we quickly ran our Classification algorithm to see how much labels helped in uncovering patterns in the semantic space:
+  • Random Forest
 - Evaluation Metrics:  
   • Silhouette Score  for cluster compactness and separation  
   • NMI (Normalized Mutual Information) that quantifies information overlap between clusters and true labels  
   • ARI (Adjusted Rand Index) which measures structural agreement between predicted clusters and true categories  
+  • Confusion Matrix for Random Forest
 
 2) **ANN Classification on MobileNetV2 Features:**  
 - Purpose is to assess how well an Artificial Neural Network can classify images using pre-extracted deep features instead of learning features from scratch.  
@@ -126,7 +140,7 @@ In this section, we describe the experiments conducted to validate our approach 
 - Purpose is to train a Convolutional Neural Network end-to-end and compare its ability to learn features directly from images against the ANN that uses MobileNetV2 features.  
 - Baseline. The CNN was directly compared with:  
   • ANN classifier  
-  • Clustering results   
+  • Clustering/Classification results   
   The ANN serves as a strong baseline because it benefits from MobileNet’s pretraining  
 - Evaluation Metrics  
   • Accuracy , standard metric for the validation  
@@ -153,10 +167,10 @@ K-Means and Hierarchical Clustering both achieved **NMI ≈ 0.74** (strong seman
 
 t-SNE projections show **survival of the fittest dynamics**: well-sampled classes (airplanes: 800 samples) form tight clusters with >85% accuracy, while minority classes (elk: 37, hibiscus: 29) fragment or collapse into neighbors (elk -> horse, hibiscus -> iris). The 10.26× imbalance ratio + 28% feature sparsity reduces effective dimensionality to ~920 features. Classification confusions concentrate in subcategory pairs (sneaker to tennis-shoe), rare class absorption, and polluted-categories ("clutter" scatters uniformly across space).
 
-**Key Visualizations** (made with plotly so in HTML and not visualisable via markdown):
+**Key Visualizations** :
 - Confusion matrices: ANN outperforms CNN on 198/233 classes
 - Top 5 confusions: all involve visually similar subcategories amplified by imbalance
-- t-SNE: isolated manifolds for dominant classes, fragmented regions for minorities
+- t-SNE: isolated manifolds for dominant classes, fragmented regions for minorities (made with plotly so in HTML and not visualisable via markdown)
 
 ---
 
