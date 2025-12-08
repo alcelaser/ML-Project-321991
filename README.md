@@ -17,6 +17,7 @@ Lapo Chiaselotti
 - setup_gpu.sh -> GPU setup for use in WSL
 - .gitignore -> Contains all the local files we did not want to flood git with (logs from tensorboard, virual environments, dataset ect ect)
 - README.md -> You're reading it
+- image folder -> Contains all used plots (not plotly) used in project, under the subfolder old is all the old plots we used and decided to change, the subfolder unrendered_plots contains the final 3 outputs which struggle to render on colab, but render fine in Visual Studio Code while running.
 
 In the **PatternMind** project we aimed to explore semantic structures within large and diverse image collections.
 
